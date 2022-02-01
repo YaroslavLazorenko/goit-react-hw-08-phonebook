@@ -1,13 +1,15 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-// axios.defaults.headers.common.accept = 'application/json';
 
 export async function registerNewUser(credentials) {
-  console.log('credentials', credentials);
-  const response = await axios.post('/users/signup', credentials);
-  console.log('response', response);
-  return response.data;
+  const { data } = await axios.post('/users/signup', credentials);
+  return data;
+}
+
+export async function loginUser(credentials) {
+  const { data } = await axios.post('/users/login', credentials);
+  return data;
 }
 
 export async function fetchContacts() {
