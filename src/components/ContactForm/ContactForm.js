@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { phonebookOperations } from 'redux/phonebook';
-import { phonebookSelectors } from 'redux/phonebook';
+import { phonebookOperations, phonebookSelectors } from 'redux/phonebook';
 import s from './ContactForm.module.css';
 
 const INITIAL_FORM_LOCAL_STATE = { name: '', number: '' };
@@ -14,11 +13,6 @@ const ContactForm = () => {
   const isLoading = useSelector(phonebookSelectors.getLoadingStatus);
 
   const dispatch = useDispatch();
-
-  const resetForm = () => {
-    setName(INITIAL_FORM_LOCAL_STATE.name);
-    setNumber(INITIAL_FORM_LOCAL_STATE.number);
-  };
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -33,6 +27,11 @@ const ContactForm = () => {
       default:
         throw new Error('Unknown input field name');
     }
+  };
+
+  const resetForm = () => {
+    setName(INITIAL_FORM_LOCAL_STATE.name);
+    setNumber(INITIAL_FORM_LOCAL_STATE.number);
   };
 
   const addContact = (name, number) => dispatch(phonebookOperations.postContact({ name, number }));

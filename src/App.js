@@ -1,19 +1,19 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { ROUTES } from './consts';
 import AppBar from './components/AppBar';
 import RegisterPage from './pages/RgisterPage';
 import LoginPage from './pages/LoginPage';
 import ContactsPage from './pages/ContactsPage';
-import { phonebookOperations } from 'redux/phonebook';
+// import { phonebookOperations } from 'redux/phonebook';
 import './App.css';
 
 const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(phonebookOperations.fetchContacts());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(phonebookOperations.fetchContacts());
+  // }, [dispatch]);
 
   return (
     <div className="App">

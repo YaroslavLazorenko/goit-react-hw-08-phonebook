@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://61ef03d0d593d20017dbb281.mockapi.io/api/';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+// axios.defaults.headers.common.accept = 'application/json';
+
+export async function registerNewUser(credentials) {
+  console.log('credentials', credentials);
+  const response = await axios.post('/users/signup', credentials);
+  console.log('response', response);
+  return response.data;
+}
 
 export async function fetchContacts() {
   const response = await axios.get('/contacts');
