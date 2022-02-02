@@ -3,9 +3,10 @@ import * as phonebookApi from 'services/phonebook-api';
 
 export const fetchContacts = createAsyncThunk(
   'phonebook/fetchContacts',
-  async (_, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
     try {
-      const contacts = await phonebookApi.fetchContacts();
+      const token = getState().auth.token;
+      const contacts = await phonebookApi.fetchContacts(token);
       return contacts;
     } catch (error) {
       return rejectWithValue(error.message);

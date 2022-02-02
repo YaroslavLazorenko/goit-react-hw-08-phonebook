@@ -1,13 +1,22 @@
-import { useSelector } from 'react-redux';
-import { authSelectors } from 'redux/auth';
+import { useSelector, useDispatch } from 'react-redux';
+import { authOperations, authSelectors } from 'redux/auth';
 
 const UserMenu = () => {
-  const email = useSelector(authSelectors.getUserEmail);
+  const userName = useSelector(authSelectors.getUserName);
+  const userEmail = useSelector(authSelectors.getUserEmail);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(authOperations.logout());
+  };
 
   return (
     <>
-      <p>{email}</p>
-      <button type="button">Logout</button>
+      <p>Hello, {userName}</p>
+      <p>{userEmail}</p>
+      <button type="button" onClick={handleClick}>
+        Logout
+      </button>
     </>
   );
 };

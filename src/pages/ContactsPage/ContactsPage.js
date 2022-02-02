@@ -1,14 +1,22 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
 import { phonebookSelectors } from 'redux/phonebook';
+import { phonebookOperations } from 'redux/phonebook';
 
 const ContactsPage = () => {
   const contacts = useSelector(phonebookSelectors.getContactsItems);
   const isLoading = useSelector(phonebookSelectors.getLoadingStatus);
   const error = useSelector(phonebookSelectors.getError);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(phonebookOperations.fetchContacts());
+  }, [dispatch]);
 
   if (error) {
     alert(error);
