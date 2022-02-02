@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { phonebookOperations, phonebookSelectors } from 'redux/phonebook';
+import showMessage from 'services/showMessage';
 import s from './ContactForm.module.css';
 
 const INITIAL_FORM_LOCAL_STATE = { name: '', number: '' };
@@ -44,7 +45,7 @@ const ContactForm = () => {
     );
 
     if (isContactAlreadySaved) {
-      alert(`${name} is already in contacts.`);
+      showMessage(`${name} is already in contacts.`);
       return;
     }
 

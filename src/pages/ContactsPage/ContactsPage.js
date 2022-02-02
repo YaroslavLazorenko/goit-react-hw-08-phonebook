@@ -11,17 +11,12 @@ import { phonebookOperations } from 'redux/phonebook';
 const ContactsPage = () => {
   const contacts = useSelector(phonebookSelectors.getContactsItems);
   const isLoading = useSelector(phonebookSelectors.getLoadingStatus);
-  const error = useSelector(phonebookSelectors.getError);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(phonebookOperations.fetchContacts());
   }, [dispatch]);
-
-  if (error) {
-    alert(error);
-  }
 
   return (
     <>

@@ -2,8 +2,11 @@ import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { ToastContainer } from 'react-toastify';
 import { ROUTES, SPINNER } from './consts';
 import { authOperations, authSelectors } from 'redux/auth';
+import { phonebookSelectors } from 'redux/phonebook';
+import showMessage from 'services/showMessage';
 import AppBar from './components/AppBar';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
@@ -21,10 +24,20 @@ const App = () => {
   const dispatch = useDispatch();
 
   const isRefreshingUser = useSelector(authSelectors.getIsRefreshingUser);
+  const isAuthLoading = useSelector(authSelectors.getIsAuthLoading);
+  const phonebookError = useSelector(phonebookSelectors.getError);
+  const authError = useSelector(authSelectors.getError);
 
   useEffect(() => {
     dispatch(authOperations.refreshUser());
   }, [dispatch]);
+
+  if (phonebookError) {
+    showMessage('Contacts handling error. ' + phonebookError);
+  }
+  if (authError) {
+    showMessage('Authorization error. ' + authError);
+  }
 
   return (
     <div className="App">
@@ -36,6 +49,7 @@ const App = () => {
         <>
           <AppBar />
           <main>
+            <ToastContainer autoClose={3000} />
             <Suspense
               fallback={
                 <div>
@@ -71,6 +85,9 @@ const App = () => {
                 <Route path="/*" element={<Navigate to={ROUTES.LOGIN} replace />} />
               </Routes>
             </Suspense>
+            <div>
+              <ClipLoader color={SPINNER.COLOR} loading={isAuthLoading} size={SPINNER.SIZE} />
+            </div>
           </main>
         </>
       )}
