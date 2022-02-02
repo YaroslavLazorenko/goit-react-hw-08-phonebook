@@ -5,6 +5,7 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
+  isRefreshingUser: false,
 };
 
 const authSlice = createSlice({
@@ -35,11 +36,16 @@ const authSlice = createSlice({
     [logout.rejected](state, action) {
       console.log('rejected logout', action.payload);
     },
+    [refreshUser.pending](state) {
+      state.isRefreshingUser = true;
+    },
     [refreshUser.fulfilled](state, { payload }) {
       state.user = payload;
       state.isLoggedIn = true;
+      state.isRefreshingUser = false;
     },
     [refreshUser.rejected](state, action) {
+      state.isRefreshingUser = false;
       console.log('rejected logout', action.payload);
     },
   },

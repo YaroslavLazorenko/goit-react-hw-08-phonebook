@@ -4,6 +4,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
+import { SPINNER } from 'consts';
 import { phonebookSelectors } from 'redux/phonebook';
 import { phonebookOperations } from 'redux/phonebook';
 
@@ -31,7 +32,7 @@ const ContactsPage = () => {
       <Filter />
       {contacts.length !== 0 && <ContactList />}
       <div>
-        <ClipLoader color={'#000000'} loading={isLoading} size={50} />
+        <ClipLoader color={SPINNER.COLOR} loading={isLoading} size={SPINNER.SIZE} />
       </div>
     </>
   );
