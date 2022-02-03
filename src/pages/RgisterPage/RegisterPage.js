@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
+import styles from './RegisterPage.module.css';
 
 const INITIAL_FORM_LOCAL_STATE = { name: '', email: '', password: '' };
 
@@ -47,11 +48,14 @@ const RegisterPage = () => {
   };
 
   return (
-    <>
-      <h1>Register</h1>
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Register</h1>
+      <form action="#" onSubmit={handleSubmit} className={styles.form}>
+        <label className={styles.label} htmlFor="name">
+          Name
+        </label>
         <input
+          className={styles.inputField}
           id="name"
           type="text"
           name="name"
@@ -62,8 +66,11 @@ const RegisterPage = () => {
           value={name}
           onChange={handleChange}
         />
-        <label htmlFor="email">Email</label>
+        <label className={styles.label} htmlFor="email">
+          Email
+        </label>
         <input
+          className={styles.inputField}
           id="email"
           type="email"
           name="email"
@@ -73,8 +80,11 @@ const RegisterPage = () => {
           value={email}
           onChange={handleChange}
         />
-        <label htmlFor="password">Password</label>
+        <label className={styles.label} htmlFor="password">
+          Password
+        </label>
         <input
+          className={styles.inputField}
           id="password"
           type="password"
           name="password"
@@ -86,9 +96,11 @@ const RegisterPage = () => {
           onChange={handleChange}
         />
 
-        <button type="submit">Sign Up</button>
+        <button className={styles.button} type="submit">
+          Sign Up
+        </button>
       </form>
-    </>
+    </div>
   );
 };
 

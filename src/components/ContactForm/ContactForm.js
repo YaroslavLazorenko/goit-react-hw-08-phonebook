@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { phonebookOperations, phonebookSelectors } from 'redux/phonebook';
 import showMessage from 'services/showMessage';
-import s from './ContactForm.module.css';
+import styles from './ContactForm.module.css';
 
 const INITIAL_FORM_LOCAL_STATE = { name: '', number: '' };
 
@@ -54,12 +54,12 @@ const ContactForm = () => {
   };
 
   return (
-    <form className={s.form} action="#" onSubmit={handleSubmit}>
-      <label className={s.label} htmlFor="name">
+    <form className={styles.form} action="#" onSubmit={handleSubmit}>
+      <label className={styles.label} htmlFor="name">
         Name:
       </label>
       <input
-        className={s.inputField}
+        className={styles.inputField}
         id="name"
         type="text"
         name="name"
@@ -70,11 +70,11 @@ const ContactForm = () => {
         value={name}
         onChange={handleChange}
       />
-      <label className={s.label} htmlFor="number">
+      <label className={styles.label} htmlFor="number">
         Number:
       </label>
       <input
-        className={s.inputField}
+        className={styles.inputField}
         id="number"
         type="tel"
         name="number"
@@ -86,7 +86,7 @@ const ContactForm = () => {
         onChange={handleChange}
       />
 
-      <button className={s.button} type="submit" disabled={isLoading}>
+      <button className={styles.button} type="submit" disabled={isLoading}>
         Add contact
       </button>
     </form>

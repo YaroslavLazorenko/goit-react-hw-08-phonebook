@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
+import styles from './LoginPage.module.css';
 
 const INITIAL_FORM_LOCAL_STATE = { email: '', password: '' };
 
@@ -42,11 +43,14 @@ const LoginPage = () => {
   };
 
   return (
-    <>
-      <h1>Login</h1>
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Login</h1>
+      <form action="#" onSubmit={handleSubmit} className={styles.form}>
+        <label className={styles.label} htmlFor="email">
+          Email
+        </label>
         <input
+          className={styles.inputField}
           id="email"
           type="email"
           name="email"
@@ -56,8 +60,11 @@ const LoginPage = () => {
           value={email}
           onChange={handleChange}
         />
-        <label htmlFor="password">Password</label>
+        <label className={styles.label} htmlFor="password">
+          Password
+        </label>
         <input
+          className={styles.inputField}
           id="password"
           type="password"
           name="password"
@@ -69,9 +76,11 @@ const LoginPage = () => {
           onChange={handleChange}
         />
 
-        <button type="submit">Login</button>
+        <button className={styles.button} type="submit">
+          Login
+        </button>
       </form>
-    </>
+    </div>
   );
 };
 

@@ -7,6 +7,7 @@ import ContactList from 'components/ContactList';
 import { SPINNER } from 'consts';
 import { phonebookSelectors } from 'redux/phonebook';
 import { phonebookOperations } from 'redux/phonebook';
+import styles from './ContactsPage.module.css';
 
 const ContactsPage = () => {
   const contacts = useSelector(phonebookSelectors.getContactsItems);
@@ -19,17 +20,17 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <h1 className="phonebookTitle">Phonebook</h1>
+    <div className={styles.container}>
+      <h1 className={styles.phonebookTitle}>Phonebook</h1>
       <ContactForm />
 
-      <h2 className="contactsTitle">Contacts</h2>
+      <h2 className={styles.contactsTitle}>Contacts</h2>
       <Filter />
       {contacts.length !== 0 && <ContactList />}
       <div>
         <ClipLoader color={SPINNER.COLOR} loading={isLoading} size={SPINNER.SIZE} />
       </div>
-    </>
+    </div>
   );
 };
 

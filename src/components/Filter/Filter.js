@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { phonebookActions } from 'redux/phonebook';
 import { phonebookSelectors } from 'redux/phonebook';
-import s from './Filter.module.css';
+import styles from './Filter.module.css';
 
 const Filter = () => {
   const filter = useSelector(phonebookSelectors.getContactsFilter);
@@ -9,9 +9,9 @@ const Filter = () => {
 
   return (
     <>
-      <p className={s.title}>Find contacts by name</p>
+      <p className={styles.title}>Find contacts by name</p>
       <input
-        className={s.inputField}
+        className={styles.inputField}
         type="text"
         name="filter"
         placeholder="Enter name"

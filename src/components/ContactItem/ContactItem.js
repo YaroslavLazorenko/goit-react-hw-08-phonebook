@@ -1,19 +1,19 @@
 import { PropTypes } from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { phonebookOperations, phonebookSelectors } from 'redux/phonebook';
-import s from './ContactItem.module.css';
+import styles from './ContactItem.module.css';
 
 const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(phonebookSelectors.getLoadingStatus);
 
   return (
-    <li className={s.contactItem}>
-      <span className={s.contactText}>
+    <li className={styles.contactItem}>
+      <span className={styles.contactText}>
         {contact.name}: {contact.number}
       </span>
       <button
-        className={s.button}
+        className={styles.button}
         onClick={() => dispatch(phonebookOperations.deleteContact(contact.id))}
         disabled={isLoading}
       >
