@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import { phonebookOperations, phonebookSelectors } from 'redux/phonebook';
 import showMessage from 'services/showMessage';
 import styles from './ContactForm.module.css';
@@ -58,7 +60,7 @@ const ContactForm = () => {
       <label className={styles.label} htmlFor="name">
         Name:
       </label>
-      <input
+      <TextField
         className={styles.inputField}
         id="name"
         type="text"
@@ -69,11 +71,12 @@ const ContactForm = () => {
         required
         value={name}
         onChange={handleChange}
+        size="small"
       />
       <label className={styles.label} htmlFor="number">
         Number:
       </label>
-      <input
+      <TextField
         className={styles.inputField}
         id="number"
         type="tel"
@@ -84,11 +87,12 @@ const ContactForm = () => {
         required
         value={number}
         onChange={handleChange}
+        size="small"
       />
 
-      <button className={styles.button} type="submit" disabled={isLoading}>
+      <Button type="submit" disabled={isLoading} variant="outlined">
         Add contact
-      </button>
+      </Button>
     </form>
   );
 };

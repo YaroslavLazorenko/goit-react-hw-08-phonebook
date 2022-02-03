@@ -1,3 +1,4 @@
+import Button from '@mui/material/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
 import styles from './UserMenu.module.css';
@@ -17,9 +18,9 @@ const UserMenu = () => {
         <p className={styles.name}>Hello, {userName}!</p>
         <div className={styles.logoutContainer}>
           <p className={styles.email}>{userEmail}</p>
-          <button type="button" onClick={handleClick} className={styles.button}>
+          <Button type="button" onClick={handleClick} variant="contained">
             Logout
-          </button>
+          </Button>
         </div>
       </div>
     </>

@@ -1,5 +1,6 @@
 import { PropTypes } from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import Button from '@mui/material/Button';
 import { phonebookOperations, phonebookSelectors } from 'redux/phonebook';
 import styles from './ContactItem.module.css';
 
@@ -12,13 +13,14 @@ const ContactItem = ({ contact }) => {
       <span className={styles.contactText}>
         {contact.name}: {contact.number}
       </span>
-      <button
-        className={styles.button}
+      <Button
         onClick={() => dispatch(phonebookOperations.deleteContact(contact.id))}
         disabled={isLoading}
+        variant="contained"
+        size="small"
       >
         Delete
-      </button>
+      </Button>
     </li>
   );
 };

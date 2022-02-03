@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import { authOperations } from 'redux/auth';
 import styles from './LoginPage.module.css';
 
@@ -49,7 +51,7 @@ const LoginPage = () => {
         <label className={styles.label} htmlFor="email">
           Email
         </label>
-        <input
+        <TextField
           className={styles.inputField}
           id="email"
           type="email"
@@ -59,11 +61,12 @@ const LoginPage = () => {
           required
           value={email}
           onChange={handleChange}
+          size="small"
         />
         <label className={styles.label} htmlFor="password">
           Password
         </label>
-        <input
+        <TextField
           className={styles.inputField}
           id="password"
           type="password"
@@ -74,11 +77,12 @@ const LoginPage = () => {
           required
           value={password}
           onChange={handleChange}
+          size="small"
         />
 
-        <button className={styles.button} type="submit">
+        <Button type="submit" variant="contained">
           Login
-        </button>
+        </Button>
       </form>
     </div>
   );

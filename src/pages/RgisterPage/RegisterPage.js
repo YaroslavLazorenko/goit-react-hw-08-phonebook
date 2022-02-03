@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import { authOperations } from 'redux/auth';
 import styles from './RegisterPage.module.css';
 
@@ -54,7 +56,7 @@ const RegisterPage = () => {
         <label className={styles.label} htmlFor="name">
           Name
         </label>
-        <input
+        <TextField
           className={styles.inputField}
           id="name"
           type="text"
@@ -65,11 +67,12 @@ const RegisterPage = () => {
           required
           value={name}
           onChange={handleChange}
+          size="small"
         />
         <label className={styles.label} htmlFor="email">
           Email
         </label>
-        <input
+        <TextField
           className={styles.inputField}
           id="email"
           type="email"
@@ -79,11 +82,12 @@ const RegisterPage = () => {
           required
           value={email}
           onChange={handleChange}
+          size="small"
         />
         <label className={styles.label} htmlFor="password">
           Password
         </label>
-        <input
+        <TextField
           className={styles.inputField}
           id="password"
           type="password"
@@ -94,11 +98,12 @@ const RegisterPage = () => {
           required
           value={password}
           onChange={handleChange}
+          size="small"
         />
 
-        <button className={styles.button} type="submit">
+        <Button type="submit" variant="contained">
           Sign Up
-        </button>
+        </Button>
       </form>
     </div>
   );
